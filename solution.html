@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post" action="operation arithmetique.php">
+        <label>nbr1:</label>
+        <input type="number" name="nbr1" required><br>
+        <label>nbr2:</label>
+        <input type="number" name="nbr2" required><br>
+        <input type="submit" name="envoyer" value="send">
+
+        <select name="op">
+            <option>+</option>
+            <option>-</option>
+            <option>*</option>
+            <option>/</option>
+        </select>
+    </form>
+    <?php
+
+    if (isset($_POST['envoyer'])) {
+
+        switch ($_POST['op']) {
+            case '+':
+                echo $_POST['nbr1'] + $_POST['nbr2'];
+                break;
+            case '-':
+                echo $_POST['nbr1'] - $_POST['nbr2'];
+                break;
+            case '*':
+                echo $_POST['nbr1'] * $_POST['nbr2'];
+                break;
+            case '/':
+                if ($_POST['nbr2'] != 0) {
+                    echo $_POST['nbr1'] / $_POST['nbr2'];
+                } else {
+                    echo "Division par zero impossible!";
+                }
+                break;
+            default:
+                echo "Erreur";
+                break;
+        }
+    }
+    ?>
+</body>
+</html>
